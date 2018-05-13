@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>zedboard-swsleds-irq</name>
-	<comment>Created by SDK v2017.2. zedboard-swsleds-irq_bsp - ps7_cortexa9_0</comment>
+	<comment>Created by SDK v2018.1. zedboard-swsleds-irq_bsp - ps7_cortexa9_0</comment>
 	<projects>
 		<project>zedboard-swsleds-irq_bsp</project>
 	</projects>

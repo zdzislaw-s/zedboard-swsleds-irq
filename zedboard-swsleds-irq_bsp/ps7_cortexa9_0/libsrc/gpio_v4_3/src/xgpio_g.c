@@ -5,7 +5,7 @@
 * Version: 
 * DO NOT EDIT.
 *
-* Copyright (C) 2010-2017 Xilinx, Inc. All Rights Reserved.*
+* Copyright (C) 2010-2018 Xilinx, Inc. All Rights Reserved.*
 *Permission is hereby granted, free of charge, to any person obtaining a copy
 *of this software and associated documentation files (the Software), to deal
 *in the Software without restriction, including without limitation the rights
@@ -47,16 +47,10 @@
 XGpio_Config XGpio_ConfigTable[XPAR_XGPIO_NUM_INSTANCES] =
 {
 	{
-		XPAR_LEDS_GPIO_DEVICE_ID,
-		XPAR_LEDS_GPIO_BASEADDR,
-		XPAR_LEDS_GPIO_INTERRUPT_PRESENT,
-		XPAR_LEDS_GPIO_IS_DUAL
-	},
-	{
-		XPAR_SWS_GPIO_DEVICE_ID,
-		XPAR_SWS_GPIO_BASEADDR,
-		XPAR_SWS_GPIO_INTERRUPT_PRESENT,
-		XPAR_SWS_GPIO_IS_DUAL
+		XPAR_AXI_GPIO_0_DEVICE_ID,
+		XPAR_AXI_GPIO_0_BASEADDR,
+		XPAR_AXI_GPIO_0_INTERRUPT_PRESENT,
+		XPAR_AXI_GPIO_0_IS_DUAL
 	}
 };
 
