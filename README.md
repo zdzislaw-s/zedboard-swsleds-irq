@@ -29,3 +29,17 @@ This #define controls operation of the software - for `IS_IRQ_ON == 1` the inter
 1. Program your FPGA with **Xilinx > Program FPGA** with the pre-built image [`zedboard_swsleds_irq.bit`](https://github.com/zdzislaw-s/zedboard-swsleds-irq/blob/master/zedboard_swsleds_irq.bit) (the blue LED Done should light up).
 1. Deploy the resultant `zedboard-swsleds-irq.elf` or `zedboard-swsleds-freertos.elf` file built in the Building step to the board with **Run As > Launch on Hardware (GDB)**.
 1. You should be able to turn the LEDs on and off with the DIP switches.
+
+### Booting of QSPI flash memory
+One might want to boot their program of the flash memory that is available on ZedBoard. For this purpose I added extra two projects, namely _zedboard-swsleds-fsbl_bsp_ and _zedboard-swsleds-fsbl_, that allow for creation of a BOOT.mcs file, i.e. the file for booting of the QSPI flash. The procedure for enabling such a boot mode is as follow:
+1. Build one of the projects _zedboard-swsleds-irq_ or _zedboard-swsleds-freertos_ (and their dependencies).
+1. Build the project _zedboard-swsleds-fsbl_ (and its dependency _zedboard-swsleds-fsbl_bsp_).
+1. Create the boot image by means of **Xilinx > Create Boot Image** dialog.
+1. In this dialog select:  
+  4.1 Output format: MCS.  
+  4.2 Boot image partitions: (bootloader) `zedboard-swsleds-fsbl.elf`, `zedboard_swsleds_irq.bit`, either `zedboard-swsleds-irq.elf` or `zedboard-swsleds-freertos.elf` (in this order).  
+  4.3 Name your output .mcs file.
+    + Once that information is entered, click the **Create Image** button.
+
+1. Use **Xilinx > Program Flash** to program the memory with the created image.
+1. Make sure that the _Boot Mode_ jumpers are set for booting of the flash (`MIO3: 0`, `MIO4: 0`, `MIO5: 1`) before next powering of the board.
