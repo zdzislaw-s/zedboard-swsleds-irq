@@ -12,18 +12,20 @@ The design of hardware is documented in [`zedboard_swsleds_irq.pdf`](https://git
 ### Installation
 After cloning the repository you need to:
 1. Start Xilinx SDK, and
-1. Import the Eclipse projects with **File > Open Projects from File System...** from: `zedboard-swsleds-irq`, `zedboard-swsleds-irq_bsp` and `zedboard_swsleds_irq_hw_platform_0` directories.
+1. Import the Eclipse projects with **File > Open Projects from File System...** from:  `zedboard_swsleds_irq_hw_platform_0`, `zedboard-swsleds-irq_bsp`, `zedboard-swsleds-irq`, `zedboard-swsleds-freertos_bsp` and `zedboard-swsleds-freertos` directories.
 
 ### Building
-Build the project _zedboard-swsleds-irq_ with **Project > Build Project**.
+Build the project _zedboard-swsleds-irq_ and/or _zedboard-swsleds-freertos_ with **Project > Build Project**.
 
-Note: The source file [`zedboard-swsleds-irq/src/zedboard-swsleds-irq.c`](https://github.com/zdzislaw-s/zedboard-swsleds-irq/blob/master/zedboard-swsleds-irq/src/zedboard-swsleds-irq.c) has on in its first line the following #define:
+Note 1: As indicated by its name, the project _zedboard-swsleds-freertos_ uses FreeRTOS in order achieve the required functionality.
+
+Note 2: In the project _zedboard-swsleds-irq_ , the source file [`zedboard-swsleds-irq/src/zedboard-swsleds-irq.c`](https://github.com/zdzislaw-s/zedboard-swsleds-irq/blob/master/zedboard-swsleds-irq/src/zedboard-swsleds-irq.c) has on in its first line the following #define:
 ```c
 #define IS_IRQ_ON 1
 ```
-This define controls operation of the software - for `IS_IRQ_ON == 1` the interrupts are enabled, for `IS_IRQ_ON == 0` the interrupts are disabled and the LEDs are turned off/on in a polling mode.
+This #define controls operation of the software - for `IS_IRQ_ON == 1` the interrupts are enabled, for `IS_IRQ_ON == 0` the interrupts are disabled and the LEDs are turned off/on in a polling mode.
 
 ### Running
 1. Program your FPGA with **Xilinx > Program FPGA** with the pre-built image [`zedboard_swsleds_irq.bit`](https://github.com/zdzislaw-s/zedboard-swsleds-irq/blob/master/zedboard_swsleds_irq.bit) (the blue LED Done should light up).
-1. Deploy the resultant `zedboard-swsleds-irq.elf` file built in the Building step to the board with **Run As > Launch on Hardware (GDB)**.
+1. Deploy the resultant `zedboard-swsleds-irq.elf` or `zedboard-swsleds-freertos.elf` file built in the Building step to the board with **Run As > Launch on Hardware (GDB)**.
 1. You should be able to turn the LEDs on and off with the DIP switches.
