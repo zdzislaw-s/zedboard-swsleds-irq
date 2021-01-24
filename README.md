@@ -31,7 +31,7 @@ This #define controls operation of the software - for `IS_IRQ_ON == 1` the inter
 1. You should be able to turn the LEDs on and off with the DIP switches.
 
 ### Booting of QSPI flash memory
-One might want to boot their program of the flash memory that is available on ZedBoard. For this purpose I added extra two projects, namely _zedboard-swsleds-fsbl_bsp_ and _zedboard-swsleds-fsbl_, that allow for creation of a BOOT.mcs file, i.e. the file for booting of the QSPI flash. The procedure for enabling such a boot mode is as follow:
+One might want to boot their board of the flash memory that is available on ZedBoard. For this purpose I added extra two projects, namely _zedboard-swsleds-fsbl_bsp_ and _zedboard-swsleds-fsbl_, that allow for creation of a BOOT.mcs file, i.e. the file for booting of the QSPI flash. The procedure for enabling such a boot mode is as follow:
 1. Build one of the projects _zedboard-swsleds-irq_ or _zedboard-swsleds-freertos_ (and their dependencies).
 1. Build the project _zedboard-swsleds-fsbl_ (and its dependency _zedboard-swsleds-fsbl_bsp_).
 1. Create the boot image by means of **Xilinx > Create Boot Image** dialog.
